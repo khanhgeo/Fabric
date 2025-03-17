@@ -5,6 +5,12 @@
 # META {
 # META   "kernel_info": {
 # META     "name": "synapse_pyspark"
+# META   },
+# META   "dependencies": {
+# META     "environment": {
+# META       "environmentId": "2e40da96-f6f6-b1fc-4f27-b1234b85c253",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
+# META     }
 # META   }
 # META }
 
@@ -49,7 +55,7 @@
 
 # CELL ********************
 
-%pip install semantic-link
+# %pip install semantic-link
 
 # METADATA ********************
 

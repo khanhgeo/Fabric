@@ -1,0 +1,306 @@
+table Sales
+	isHidden
+
+	measure Regular_Sales_Dollars = SUM([Sum_Regular_Sales_Dollars])
+
+		annotation Format = <Format Format="General" />
+
+	measure Markdown_Sales_Dollars = SUM([Sum_Markdown_Sales_Dollars])
+
+		annotation Format = <Format Format="General" />
+
+	measure TotalSales = [Regular_Sales_Dollars]+[Markdown_Sales_Dollars]
+
+		annotation Format = <Format Format="General" />
+
+	measure TotalSalesLY = CALCULATE([TotalSales], Sales[ScenarioID]=2)
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		annotation Format = <Format Format="CurrencyCustom"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Gross Margin This Year' = CALCULATE(SUM([Sum_GrossMarginAmount]), Sales[ScenarioID]=1)
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		annotation Format = <Format Format="CurrencyCustom"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Gross Margin This Year %' = [Gross Margin This Year]/[TotalSalesTY]
+		formatString: 0.00 %;-0.00 %;0.00 %
+
+		annotation Format = <Format Format="Percentage" Accuracy="2" />
+
+	measure 'Gross Margin Last Year' = CALCULATE(SUM([Sum_GrossMarginAmount]), Sales[ScenarioID]=2)
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		annotation Format = <Format Format="CurrencyCustom"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Gross Margin Last Year %' = [Gross Margin Last Year]/[TotalSalesLY]
+		formatString: 0.00 %;-0.00 %;0.00 %
+
+		annotation Format = <Format Format="Percentage" Accuracy="2" />
+
+	measure Regular_Sales_Units = SUM([Sum_Regular_Sales_Units])
+
+		annotation Format = <Format Format="General" />
+
+	measure Markdown_Sales_Units = SUM([Sum_Markdown_Sales_Units])
+
+		annotation Format = <Format Format="General" />
+
+	measure TotalUnits = [Regular_Sales_Units]+[Markdown_Sales_Units]
+
+		annotation Format = <Format Format="General" />
+
+	measure 'Total Units Last Year' = CALCULATE([TotalUnits], Sales[ScenarioID]=2)
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		annotation Format = <Format Format="CurrencyCustom"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Total Units This Year' = CALCULATE([TotalUnits], Sales[ScenarioID]=1)
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		annotation Format = <Format Format="CurrencyCustom"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Avg $/Unit TY' = IF([Total Units This Year]<>0, [TotalSalesTY]/[Total Units This Year], BLANK())
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+
+		annotation Format = <Format Format="CurrencyCustom" Accuracy="2"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Avg $/Unit LY' = IF([Total Units Last Year]<>0, [TotalSalesLY]/[Total Units Last Year], BLANK())
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+
+		annotation Format = <Format Format="CurrencyCustom" Accuracy="2"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Total Sales Var' = [TotalSalesTY]-[TotalSalesLY]
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		annotation Format = <Format Format="CurrencyCustom"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Total Sales Var %' = IF([TotalSalesLY]<>0, [Total Sales Var]/[TotalSalesLY], BLANK())
+		formatString: 0.00 %;-0.00 %;0.00 %
+
+		annotation Format = <Format Format="Percentage" Accuracy="2" />
+
+	measure 'Sales Per Sq Ft' = ([TotalSalesTY]/(DISTINCTCOUNT([MonthID])*SUM(Store[SellingAreaSize])))*12
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+
+		annotation Format = <Format Format="CurrencyCustom" Accuracy="2" ThousandSeparator="True"><Currency LCID="1033" DisplayName="$" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Last Year Sales' = [TotalSalesLY]
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		annotation Format = <Format Format="CurrencyCustom" ThousandSeparator="True"><Currency LCID="1033" DisplayName="$" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Total Sales Variance' = [Total Sales Var]
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		annotation Format = <Format Format="CurrencyCustom" ThousandSeparator="True"><Currency LCID="1033" DisplayName="$" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Total Sales Variance %' = [Total Sales Var %]
+		formatString: 0.00 %;-0.00 %;0.00 %
+
+		annotation Format = <Format Format="Percentage" Accuracy="2" />
+
+	measure 'Store Count' = DISTINCTCOUNT([LocationID])
+		formatString: 0
+
+		annotation Format = <Format Format="NumberWhole" />
+
+	measure 'Average Unit Price' = [Avg $/Unit TY]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+
+		annotation Format = <Format Format="CurrencyCustom" Accuracy="2" ThousandSeparator="True"><Currency LCID="1033" DisplayName="$" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'Average Unit Price Last Year' = [Avg $/Unit LY]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+
+		annotation Format = <Format Format="CurrencyCustom" Accuracy="2"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure TotalSalesTY = CALCULATE([TotalSales], Sales[ScenarioID]=1)
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		kpi
+			targetExpression = 'Sales'[TotalSalesLY]
+			targetFormatString: \$#,0;(\$#,0);\$#,0
+			statusGraphic: Traffic Light - Single
+			statusExpression = ```
+				var x='Sales'[TotalSalesTY]/'Sales'[_TotalSalesTY Goal] return
+				if(ISBLANK(x),BLANK(),
+				        If(x<0.95,-1,
+					    If(x<1,0,1)
+				    )
+				)
+				
+				```
+
+			annotation GoalType = Measure
+
+			annotation KpiStatusType = Linear
+
+			annotation KpiThresholdType = Percentage
+
+			annotation KpiThresholdOrdering = Ascending
+
+			annotation KpiThresholdCount = 2
+
+			annotation KpiThreshold_0 = 95
+
+			annotation KpiThreshold_1 = 100
+
+		annotation Format = <Format Format="CurrencyCustom"><Currency LCID="1033" DisplayName="$ English (United States)" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	measure 'This Year Sales' = [TotalSalesTY]
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		kpi
+			targetExpression = 'Sales'[Last Year Sales]
+			targetFormatString: \$#,0;(\$#,0);\$#,0
+			statusGraphic: Traffic Light - Single
+			statusExpression = ```
+				var x='Sales'[This Year Sales]/'Sales'[_This Year Sales Goal] return
+				if(ISBLANK(x),BLANK(),
+				        If(x<0.95,-1,
+					    If(x<1,0,1)
+				    )
+				)
+				
+				```
+
+			annotation GoalType = Measure
+
+			annotation KpiStatusType = Linear
+
+			annotation KpiThresholdType = Percentage
+
+			annotation KpiThresholdOrdering = Ascending
+
+			annotation KpiThresholdCount = 2
+
+			annotation KpiThreshold_0 = 95
+
+			annotation KpiThreshold_1 = 100
+
+		annotation Format = <Format Format="CurrencyCustom" ThousandSeparator="True"><Currency LCID="1033" DisplayName="$" Symbol="$" PositivePattern="0" NegativePattern="0" /></Format>
+
+	column MonthID
+		dataType: int64
+		isHidden
+		summarizeBy: count
+		sourceColumn: MonthID
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItemID
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: ItemID
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocationID
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: LocationID
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_GrossMarginAmount
+		dataType: double
+		isHidden
+		summarizeBy: sum
+		sourceColumn: Sum_GrossMarginAmount
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Double#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_Regular_Sales_Dollars
+		dataType: double
+		isHidden
+		summarizeBy: sum
+		sourceColumn: Sum_Regular_Sales_Dollars
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Double#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_Markdown_Sales_Dollars
+		dataType: double
+		isHidden
+		summarizeBy: sum
+		sourceColumn: Sum_Markdown_Sales_Dollars
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Double#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column ScenarioID
+		dataType: int64
+		isHidden
+		summarizeBy: count
+		sourceColumn: ScenarioID
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportingPeriodID = [MonthID]&"01"
+		isHidden
+		summarizeBy: none
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_Regular_Sales_Units
+		dataType: double
+		isHidden
+		summarizeBy: sum
+		sourceColumn: Sum_Regular_Sales_Units
+
+		annotation DataTypeAtRefresh = Double#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_Markdown_Sales_Units
+		dataType: double
+		isHidden
+		summarizeBy: sum
+		sourceColumn: Sum_Markdown_Sales_Units
+
+		annotation DataTypeAtRefresh = Double#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sales = query
+		source
+			query = SELECT [Sales].* FROM [Sales]
+			dataSource: 6a9a5ce8-bf98-4dd3-b183-0554d3fa10d0
+
+	annotation PBI_Id = fedada05-2adf-4199-82ad-2a12f15adb42
+
+	annotation LinkedQueryName = Sales
+

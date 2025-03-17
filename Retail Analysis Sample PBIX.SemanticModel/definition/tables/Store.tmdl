@@ -1,0 +1,245 @@
+table Store
+
+	measure 'Average Selling Area Size' = AVERAGE([SellingAreaSize])
+		formatString: #,0
+
+		annotation Format = <Format Format="NumberWhole" ThousandSeparator="True" />
+
+	measure 'New Stores' = CALCULATE(COUNTA([Store Type]), FILTER(ALL(Store), [Store Type]="New Store"))
+
+		annotation Format = <Format Format="General" />
+
+	measure 'New Stores Target' = 14
+
+		annotation Format = <Format Format="General" />
+
+	measure 'Total Stores' = COUNTA([StoreNumberName])
+		formatString: 0
+
+		annotation Format = <Format Format="NumberWhole" />
+
+	measure 'Open Store Count' = COUNTA([OpenDate])
+		formatString: 0
+
+		annotation Format = <Format Format="NumberWhole" />
+
+	measure 'Count of OpenDate' = COUNTA('Store'[OpenDate])
+
+		annotation Format = <Format Format="General" />
+
+	column LocationID
+		dataType: int64
+		isHidden
+		isKey
+		summarizeBy: none
+		sourceColumn: LocationID
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City Name'
+		dataType: string
+		isHidden
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: City Name
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Territory
+		dataType: string
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: Territory
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column PostalCode
+		dataType: string
+		dataCategory: PostalCode
+		summarizeBy: none
+		sourceColumn: PostalCode
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpenDate
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: OpenDate
+
+		variation Variation
+			isDefault
+			relationship: 74e52eb9-ac73-4b07-bb52-1b4cca072b32
+			defaultHierarchy: LocalDateTable_0eafa36c-5fc2-4b6f-84df-278a77695bc4.'Date Hierarchy'
+
+		annotation Format = <Format Format="DateTimeGeneralPattern"><DateTimes><DateTime LCID="1033" Group="GeneralDateTimeLong" FormatString="G" /></DateTimes></Format>
+
+		annotation DataTypeAtRefresh = DateTime#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column SellingAreaSize
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: SellingAreaSize
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column DistrictName
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: DistrictName
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreNumberName
+		dataType: string
+		tableDetailPosition: 0
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: StoreNumberName
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreNumber
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: StoreNumber
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column City = [City Name] & ", "&[Territory]
+		dataCategory: City
+		summarizeBy: none
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chain
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Chain
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column DM
+		dataType: string
+		summarizeBy: none
+		sourceColumn: DM
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column DM_Pic
+		dataType: string
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: DM_Pic
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column DistrictID
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: DistrictID
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+	column 'Open Year' = YEAR([OpenDate])
+		summarizeBy: sum
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Store Type' = IF([Open Year]=2014, "New Store", "Same Store")
+		summarizeBy: none
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Open Month No' = MONTH([OpenDate])
+		summarizeBy: sum
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Open Month' = FORMAT([OpenDate], "MMM")
+		summarizeBy: none
+		sortByColumn: 'Open Month No'
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Store = query
+		source
+			query = SELECT [Store].* FROM [Store]
+			dataSource: aaa2c60d-7d24-4396-96cb-1db7eefba0ba
+
+	annotation PBI_Id = c86d858d-0145-488e-bad2-f66f0e723f44
+
+	annotation LinkedQueryName = Store
+

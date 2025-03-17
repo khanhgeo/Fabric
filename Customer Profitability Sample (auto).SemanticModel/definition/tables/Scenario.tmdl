@@ -1,0 +1,32 @@
+table Scenario
+	lineageTag: 716d0a89-7c6e-44e3-a744-2780df5b0bc3
+
+	column 'Scenario Key'
+		dataType: int64
+		isHidden
+		lineageTag: c155d7d3-7287-4ab5-ad8e-38a091b1dcc2
+		summarizeBy: none
+		sourceColumn: Scenario Key
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Scenario
+		dataType: string
+		lineageTag: b2822ad8-bcc0-40cf-a697-f4079aad8440
+		summarizeBy: none
+		sourceColumn: Scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Scenario = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUXJMLilNzFGK1YlWMgJynUpT0lNLlGJjAQ==", BinaryEncoding.Base64), Compression.Deflate))),
+				    #"Renamed Columns" = Table.RenameColumns(Source, {{"Column1", "Scenario Key"}, {"Column2", "Scenario"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"Scenario Key", Int64.Type}, {"Scenario", type text}})
+				 in
+				    #"Changed Type"
+

@@ -5,6 +5,12 @@
 # META {
 # META   "kernel_info": {
 # META     "name": "synapse_pyspark"
+# META   },
+# META   "dependencies": {
+# META     "environment": {
+# META       "environmentId": "2e40da96-f6f6-b1fc-4f27-b1234b85c253",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
+# META     }
 # META   }
 # META }
 
@@ -35,6 +41,7 @@
 #     * Alternatively, you can create [a new notebook](https://learn.microsoft.com/fabric/data-engineering/how-to-use-notebook#create-notebooks) to copy/paste code into cells.
 # * In the Lakehouse explorer section of your notebook, add a new or existing lakehouse to your notebook. For more information on how to add a lakehouse, see [Attach a lakehouse to your notebook](https://learn.microsoft.com/en-us/fabric/data-science/tutorial-data-science-prepare-system#attach-a-lakehouse-to-the-notebooks).
 
+
 # MARKDOWN ********************
 
 # ## Set up the notebook
@@ -45,7 +52,14 @@
 
 # CELL ********************
 
-%pip install semantic-link
+# %pip install semantic-link
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -55,6 +69,13 @@
 
 import sempy.fabric as fabric
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # 3. You can connect to the Power BI workspace. List the semantic models in the workspace:
@@ -62,6 +83,13 @@ import sempy.fabric as fabric
 # CELL ********************
 
 fabric.list_datasets()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -71,9 +99,12 @@ fabric.list_datasets()
 
 dataset = "Retail Analysis Sample PBIX"
 
-# MARKDOWN ********************
+# METADATA ********************
 
-# ## List workspace measures
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -82,6 +113,13 @@ dataset = "Retail Analysis Sample PBIX"
 # CELL ********************
 
 fabric.list_measures(dataset)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -99,6 +137,13 @@ fabric.list_measures(dataset)
 
 fabric.evaluate_measure(dataset, measure="Average Selling Area Size")
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # ### Evaluate a measure with `groupby_columns`
@@ -110,6 +155,13 @@ fabric.evaluate_measure(dataset, measure="Average Selling Area Size")
 # CELL ********************
 
 fabric.evaluate_measure(dataset, measure="Average Selling Area Size", groupby_columns=["Store[Chain]", "Store[DistrictName]"])
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -130,6 +182,13 @@ fabric.evaluate_measure(dataset, \
                         groupby_columns=["Store[Territory]"], \
                         filters={"Store[Territory]": ["PA", "TN", "VA"], "Store[Chain]": ["Lindseys"]})
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # Note that `Store` is the name of the table, `Territory` is the name of the column, and `PA` is one of the values that are allowed by the filter.
@@ -146,6 +205,13 @@ fabric.evaluate_measure(dataset, \
 
 fabric.evaluate_measure(dataset, measure="Total Units Last Year", groupby_columns=["Store[Territory]", "Sales[ItemID]"])
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # ### Evaluate multiple measures
@@ -157,6 +223,13 @@ fabric.evaluate_measure(dataset, measure="Total Units Last Year", groupby_column
 # CELL ********************
 
 fabric.evaluate_measure(dataset, measure=["Average Selling Area Size", "Total Stores"], groupby_columns=["Store[Chain]", "Store[DistrictName]"])
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -173,6 +246,13 @@ fabric.evaluate_measure(dataset, \
                         groupby_columns=["Store[Chain]", "Store[DistrictName]"], \
                         filters={"Store[Territory]": ["PA", "TN", "VA"], "Store[Chain]": ["Lindseys"]}, \
                         use_xmla=True)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 

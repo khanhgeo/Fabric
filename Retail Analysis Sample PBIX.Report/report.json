@@ -1,0 +1,267 @@
+{
+  "config": "{\"version\":\"2.5\",\"activeSectionIndex\":0}",
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "ReportSection",
+      "name": "Pod"
+    }
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "items": [
+          {
+            "name": "obvience-splash-screen-16-95959706779103726.png",
+            "path": "obvience-splash-screen-16-95959706779103726.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Info",
+      "displayOption": 1,
+      "height": 720.00,
+      "name": "ReportSection",
+      "visualContainers": [
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":67.36842105263158,\"y\":226.60287081339712,\"z\":2,\"width\":300.0956937799043,\"height\":58.79425837320574}}],\"singleVisual\":{\"background\":{\"show\":true,\"color\":\"#000000\",\"transparency\":\"0\"},\"visualType\":\"textbox\",\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"www.obvience.com\",\"textStyle\":{\"fontSize\":\"20px\",\"color\":\"#2da2bf\"},\"url\":\"http://www.obvience.com\"}]}]}}]}},\"name\":\"VisualContainer1\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":9.799043062200957,\"y\":4.899521531100478,\"z\":1,\"width\":1268.9760765550238,\"height\":714.1052631578947}}],\"singleVisual\":{\"visualType\":\"image\",\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"obvience-splash-screen-16-95959706779103726.png\"}}}}}]}},\"name\":\"VisualContainer\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "District Monthly Sales",
+      "displayOption": 0,
+      "filters": "[{\"name\":\"Filter\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Time\"}},\"Property\":\"FiscalMonth\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter1\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"District\"}},\"Property\":\"District\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter2\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"District\"}},\"Property\":\"DM\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter3\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Name\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Chain\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter5\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Item\"}},\"Property\":\"Category\"}},\"type\":\"Categorical\",\"howCreated\":1}]",
+      "height": 720.00,
+      "name": "ReportSection2",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":142.87461773700304,\"y\":74.26008968609865,\"z\":6,\"width\":535.2905198776758,\"height\":260.4484304932735}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Sales.This Year Sales\"}],\"Category\":[{\"queryRef\":\"Store.StoreNumberName\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s1\",\"Entity\":\"Sales\"},{\"Name\":\"s\",\"Entity\":\"Store\"}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"This Year Sales\"},\"Name\":\"Sales.This Year Sales\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"StoreNumberName\"},\"Name\":\"Store.StoreNumberName\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"StoreNumber\"}},\"Function\":0}}}]},\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}},\"name\":\"VisualContainer5\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":2,\"y\":2,\"z\":0,\"width\":340,\"height\":69}}],\"singleVisual\":{\"visualType\":\"textbox\",\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"District Monthly Sales\",\"textStyle\":{\"fontFamily\":\"Segoe UI Light\",\"fontSize\":\"37.33px\",\"fontStyle\":\"normal\",\"fontWeight\":\"normal\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}},\"name\":\"VisualContainer\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":447.21712538226296,\"y\":351.92825112107624,\"z\":5,\"width\":509.8470948012232,\"height\":279.8206278026906}}],\"singleVisual\":{\"visualType\":\"scatterChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Item.Category\",\"active\":true}],\"X\":[{\"queryRef\":\"Sales.Total Sales Variance %\"}],\"Y\":[{\"queryRef\":\"Sales.Avg $/Unit TY\"}],\"Size\":[{\"queryRef\":\"Sales.This Year Sales\"}],\"Series\":[{\"queryRef\":\"Item.Category\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"Item\"},{\"Name\":\"s\",\"Entity\":\"Sales\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Category\"},\"Name\":\"Item.Category\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Total Sales Variance %\"},\"Name\":\"Sales.Total Sales Variance %\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Avg $/Unit TY\"},\"Name\":\"Sales.Avg $/Unit TY\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"This Year Sales\"},\"Name\":\"Sales.This Year Sales\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Total Sales Variance %\"}}}]},\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}},\"name\":\"VisualContainer4\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":6.850152905198776,\"y\":83.94618834080717,\"z\":7,\"width\":116.4525993883792,\"height\":241.0762331838565}}],\"singleVisual\":{\"title\":{\"show\":true,\"text\":\"District Manager\",\"fontColor\":\"#000000\"},\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"District.DM\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"District\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DM\"},\"Name\":\"District.DM\"}]},\"objects\":{\"header\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}},\"name\":\"VisualContainer6\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":677,\"y\":59,\"z\":4,\"width\":275,\"height\":273}}],\"singleVisual\":{\"title\":{\"show\":true},\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"select\",\"active\":true}],\"Y\":[{\"queryRef\":\"select1\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Time\"},{\"Name\":\"s\",\"Entity\":\"Sales\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"FiscalMonth\"},\"Name\":\"select\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Total Sales Variance %\"},\"Name\":\"select1\"}]},\"objects\":{\"categoryAxis\":[{\"properties\":{\"axisType\":{\"expr\":{\"Literal\":{\"Value\":\"'Categorical'\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Bottom'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}},\"name\":\"VisualContainer1\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":835.8620689655173,\"y\":683.4697217675941,\"z\":7,\"width\":123.21839080459772,\"height\":36.53027823240589}}],\"singleVisual\":{\"visualType\":\"textbox\",\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"obviEnce llc ©\",\"textStyle\":{\"fontFamily\":\"Heading\",\"fontSize\":\"10.67px\",\"fontStyle\":\"normal\",\"fontWeight\":\"normal\"}}],\"horizontalTextAlignment\":\"right\"}]}}]}},\"name\":\"VisualContainer2\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":9.785932721712538,\"y\":351.92825112107624,\"z\":4,\"width\":426.66666666666663,\"height\":279.8206278026906}}],\"singleVisual\":{\"visualType\":\"areaChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Time.FiscalMonth\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sales.Last Year Sales\"},{\"queryRef\":\"Sales.This Year Sales\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sales\"},{\"Name\":\"t\",\"Entity\":\"Time\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"FiscalMonth\"},\"Name\":\"Time.FiscalMonth\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Last Year Sales\"},\"Name\":\"Sales.Last Year Sales\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"This Year Sales\"},\"Name\":\"Sales.This Year Sales\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"FiscalMonth\"}}}]}},\"name\":\"VisualContainer3\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 960.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Overview",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"Filter\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"District\"}},\"Property\":\"District\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter1\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Chain\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter2\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"City\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter3\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Name\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Open Month\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter5\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Store Type\"}},\"type\":\"Categorical\",\"howCreated\":1}]",
+      "height": 720.00,
+      "name": "ReportSection3",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":1,\"width\":420,\"height\":69}}],\"singleVisual\":{\"visualType\":\"textbox\",\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Store Sales Overview\",\"textStyle\":{\"fontFamily\":\"Segoe UI Light\",\"fontSize\":\"37.33px\",\"fontStyle\":\"normal\",\"fontWeight\":\"normal\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}},\"name\":\"VisualContainer\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":108.18737270875764,\"y\":78.20773930753563,\"z\":6,\"width\":248.96130346232178,\"height\":205.9470468431772}}],\"singleVisual\":{\"title\":{\"show\":true},\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"select\",\"active\":true}],\"Y\":[{\"queryRef\":\"select1\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"},{\"Name\":\"s1\",\"Entity\":\"Sales\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Chain\"},\"Name\":\"select\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"This Year Sales\"},\"Name\":\"select1\"}]},\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"labelStyle\":{\"expr\":{\"Literal\":{\"Value\":\"'Both'\"}}}}}],\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Bottom'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}},\"name\":\"VisualContainer5\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":1131.7894736842106,\"y\":687.1578947368421,\"z\":4,\"width\":137.1866028708134,\"height\":30.62200956937799}}],\"singleVisual\":{\"visualType\":\"textbox\",\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"obviEnce llc ©\",\"textStyle\":{\"fontFamily\":\"Heading\",\"fontSize\":\"10.67px\",\"fontStyle\":\"normal\",\"fontWeight\":\"normal\"}}],\"horizontalTextAlignment\":\"right\"}]}}]}},\"name\":\"VisualContainer3\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":32.586558044806516,\"y\":351.9348268839104,\"z\":3,\"width\":564.3991853360488,\"height\":329.77596741344195}}],\"singleVisual\":{\"title\":{\"show\":true},\"visualType\":\"map\",\"projections\":{\"Category\":[{\"queryRef\":\"select\",\"active\":true}],\"Series\":[{\"queryRef\":\"select1\"}],\"Size\":[{\"queryRef\":\"select2\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"},{\"Name\":\"s1\",\"Entity\":\"Sales\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"PostalCode\"},\"Name\":\"select\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Store Type\"},\"Name\":\"select1\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"This Year Sales\"},\"Name\":\"select2\"}]},\"objects\":{\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}},\"name\":\"VisualContainer2\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":470.5498981670061,\"y\":189.0020366598778,\"z\":2,\"width\":114.70468431771894,\"height\":91.24236252545825}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Store.Total Stores\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Total Stores\"},\"Name\":\"Store.Total Stores\"}]}},\"name\":\"VisualContainer1\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":479.67413441955193,\"y\":65.17311608961303,\"z\":8,\"width\":114.70468431771894,\"height\":91.24236252545825}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Store.New Stores\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"New Stores\"},\"Name\":\"Store.New Stores\"}]}},\"name\":\"VisualContainer7\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":607.4134419551934,\"y\":331.0794297352342,\"z\":7,\"width\":654.3380855397148,\"height\":379.3075356415479}}],\"singleVisual\":{\"title\":{\"show\":true},\"visualType\":\"scatterChart\",\"projections\":{\"Category\":[{\"queryRef\":\"select\",\"active\":true},{\"queryRef\":\"select1\"}],\"Y\":[{\"queryRef\":\"select2\"}],\"X\":[{\"queryRef\":\"select3\"}],\"Size\":[{\"queryRef\":\"select4\"}],\"Series\":[{\"queryRef\":\"select\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"District\"},{\"Name\":\"s\",\"Entity\":\"Store\"},{\"Name\":\"s1\",\"Entity\":\"Sales\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"District\"},\"Name\":\"select\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"StoreNumber\"},\"Name\":\"select1\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Sales Per Sq Ft\"},\"Name\":\"select2\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Total Sales Variance %\"},\"Name\":\"select3\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"This Year Sales\"},\"Name\":\"select4\"}]},\"objects\":{\"categoryAxis\":[{\"properties\":{}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Right'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}},\"name\":\"VisualContainer6\"}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Store Type\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Store Type\"}},\"Right\":{\"Literal\":{\"Value\":\"'Same Store'\"}}}}}]},\"type\":\"Categorical\",\"howCreated\":1}]",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":643.9103869653768,\"y\":16.945010183299388,\"z\":5,\"width\":612.6272912423625,\"height\":263.29938900203666}}],\"singleVisual\":{\"title\":{\"show\":true,\"text\":\"Total Sales Variance by FiscalMonth and District Manager\"},\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Time.FiscalMonth\",\"active\":true}],\"Series\":[{\"queryRef\":\"District.DM\"}],\"Y\":[{\"queryRef\":\"Sales.Total Sales Variance\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Time\"},{\"Name\":\"d\",\"Entity\":\"District\"},{\"Name\":\"s\",\"Entity\":\"Sales\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"FiscalMonth\"},\"Name\":\"Time.FiscalMonth\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DM\"},\"Name\":\"District.DM\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Total Sales Variance\"},\"Name\":\"Sales.Total Sales Variance\"}]},\"objects\":{\"categoryAxis\":[{\"properties\":{\"axisType\":{\"expr\":{\"Literal\":{\"Value\":\"'Categorical'\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Right'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}},\"name\":\"VisualContainer4\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "New Stores",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"Filter\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Store Type\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Store Type\"}},\"Right\":{\"Literal\":{\"Value\":\"'New Store'\"}}}}}]},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter1\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Open Month\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter2\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Chain\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter3\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"City\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"Filter4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Store\"}},\"Property\":\"Name\"}},\"type\":\"Categorical\",\"howCreated\":1}]",
+      "height": 720.00,
+      "name": "ReportSection4",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":1151.3875598086124,\"y\":694.5071770334928,\"z\":1,\"width\":126.16267942583733,\"height\":24.497607655502392}}],\"singleVisual\":{\"visualType\":\"textbox\",\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"obviEnce llc ©\",\"textStyle\":{\"fontFamily\":\"Heading\",\"fontSize\":\"10.67px\",\"fontStyle\":\"normal\",\"fontWeight\":\"normal\"}}],\"horizontalTextAlignment\":\"right\"}]}}]}},\"name\":\"VisualContainer5\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":32.586558044806516,\"y\":452.30142566191444,\"z\":3,\"width\":918.9409368635438,\"height\":239.83706720977597}}],\"singleVisual\":{\"title\":{\"show\":true},\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"select\",\"active\":true}],\"Y\":[{\"queryRef\":\"select2\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Time\"},{\"Name\":\"s1\",\"Entity\":\"Sales\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"FiscalMonth\"},\"Name\":\"select\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"This Year Sales\"},\"Name\":\"select2\"}]},\"objects\":{\"categoryAxis\":[{\"properties\":{\"axisType\":{\"expr\":{\"Literal\":{\"Value\":\"'Categorical'\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Right'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}},\"name\":\"VisualContainer1\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":36.496945010183296,\"y\":76.90427698574338,\"z\":0,\"width\":550.061099796334,\"height\":323.25865580448067}}],\"singleVisual\":{\"title\":{\"show\":true},\"visualType\":\"map\",\"projections\":{\"Category\":[{\"queryRef\":\"select\",\"active\":true}],\"Series\":[{\"queryRef\":\"select1\"}],\"Size\":[{\"queryRef\":\"select2\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"},{\"Name\":\"s1\",\"Entity\":\"Sales\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"City\"},\"Name\":\"select\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Chain\"},\"Name\":\"select1\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"This Year Sales\"},\"Name\":\"select2\"}]},\"objects\":{\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Right'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}},\"name\":\"VisualContainer3\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":405.37678207739305,\"y\":9.124236252545824,\"z\":2,\"width\":457.5152749490835,\"height\":69.08350305498982}}],\"singleVisual\":{\"visualType\":\"textbox\",\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"New Stores Analysis\",\"textStyle\":{\"fontFamily\":\"Segoe UI Light\",\"fontSize\":\"37.33px\",\"fontStyle\":\"normal\",\"fontWeight\":\"normal\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}},\"name\":\"VisualContainer\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":596.9857433808554,\"y\":83.42158859470469,\"z\":4,\"width\":653.0346232179226,\"height\":175.9674134419552}}],\"singleVisual\":{\"title\":{\"show\":true},\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"select\",\"active\":true}],\"Series\":[{\"queryRef\":\"select1\"}],\"Y\":[{\"queryRef\":\"select2\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Open Month\"},\"Name\":\"select\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Chain\"},\"Name\":\"select1\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Open Store Count\"},\"Name\":\"select2\"}]},\"objects\":{\"categoryAxis\":[{\"properties\":{\"axisType\":{\"expr\":{\"Literal\":{\"Value\":\"'Categorical'\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Bottom'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}},\"name\":\"VisualContainer2\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":598.2892057026477,\"y\":272.4236252545825,\"z\":5,\"width\":653.0346232179226,\"height\":159.0224032586558}}],\"singleVisual\":{\"title\":{\"show\":true},\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"select\",\"active\":true}],\"Y\":[{\"queryRef\":\"select1\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"},{\"Name\":\"s1\",\"Entity\":\"Sales\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Name\"},\"Name\":\"select\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Sales Per Sq Ft\"},\"Name\":\"select1\"}]},\"objects\":{\"categoryAxis\":[{\"properties\":{\"axisType\":{\"expr\":{\"Literal\":{\"Value\":\"'Categorical'\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Right'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}},\"name\":\"VisualContainer4\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"layouts\":[{\"id\":0,\"position\":{\"x\":969,\"y\":451,\"width\":280,\"height\":269,\"z\":7}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Store.Name\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store\"}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Name\"},\"Name\":\"Store.Name\"}]}},\"name\":\"VisualContainer6\"}",
+          "height": 0.00,
+          "width": 0.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ],
+  "theme": "Concourse"
+}

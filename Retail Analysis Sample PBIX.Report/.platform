@@ -1,12 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Notebook",
-    "displayName": "great_expectations_tutorial",
-    "description": "New notebook"
+    "type": "Report",
+    "displayName": "Retail Analysis Sample PBIX"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "edf600f8-32d4-9db7-4ea7-59d344645b76"
+    "logicalId": "2ac1ab4e-5d04-8da7-4eaa-312845f9203c"
   }
 }

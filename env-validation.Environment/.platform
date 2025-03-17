@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Notebook",
-    "displayName": "great_expectations_tutorial",
-    "description": "New notebook"
+    "type": "Environment",
+    "displayName": "env-validation",
+    "description": "Environment"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "edf600f8-32d4-9db7-4ea7-59d344645b76"
+    "logicalId": "2e40da96-f6f6-b1fc-4f27-b1234b85c253"
   }
 }

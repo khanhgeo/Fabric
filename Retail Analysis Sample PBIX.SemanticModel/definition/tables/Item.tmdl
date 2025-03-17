@@ -1,0 +1,63 @@
+table Item
+
+	column ItemID
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: ItemID
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Buyer
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Buyer
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column FamilyNane
+		dataType: string
+		summarizeBy: none
+		sourceColumn: FamilyNane
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Item = query
+		source
+			query = SELECT [Item].* FROM [Item]
+			dataSource: d248a912-c195-4306-a898-1e7a320e0d0a
+
+	annotation PBI_Id = a8ae52ff-ef23-4a7d-aff2-df7ea73111b3
+
+	annotation LinkedQueryName = Item
+

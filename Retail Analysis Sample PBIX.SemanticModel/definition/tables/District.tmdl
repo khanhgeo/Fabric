@@ -1,0 +1,95 @@
+table District
+
+	column DistrictID
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: DistrictID
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column District
+		dataType: string
+		summarizeBy: none
+		sourceColumn: District
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column DM
+		dataType: string
+		isKey
+		keepUniqueRows
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: DM
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column DM_Pic_fl
+		dataType: string
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: DM_Pic_fl
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column DM_Pic
+		dataType: string
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: DM_Pic
+
+		annotation Format = <Format Format="Text" />
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessUnitID
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: BusinessUnitID
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column DMImage
+		dataType: binary
+		dataCategory: Image
+		isDefaultImage
+		summarizeBy: none
+		sourceColumn: DMImage
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Binary#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition District = query
+		source
+			query = SELECT [District].* FROM [District]
+			dataSource: 62f8ae38-1929-4e01-80e6-8eab92bcc3b5
+
+	annotation PBI_Id = 1c63b162-51d5-48f5-bcfe-6ed962b0d9c5
+
+	annotation LinkedQueryName = District
+

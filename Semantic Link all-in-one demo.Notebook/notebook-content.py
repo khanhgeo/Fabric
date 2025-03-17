@@ -11,6 +11,10 @@
 # META       "default_lakehouse": "fcaeb47f-8dac-4bc0-b3e5-5fb94a95c45d",
 # META       "default_lakehouse_name": "SemanticLinkLakehouse",
 # META       "default_lakehouse_workspace_id": "e5b944b0-cef1-4ca5-934a-43c4c62c456e"
+# META     },
+# META     "environment": {
+# META       "environmentId": "2e40da96-f6f6-b1fc-4f27-b1234b85c253",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
 # META     }
 # META   }
 # META }
@@ -704,6 +708,18 @@ total_size_sum
 
 dfC = fabric.list_columns(my_dataset_name, extended=True).sort_values(by='Temperature', ascending=False)
 dfC
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df = spark.sql("SHOW TABLES FROM pbi")
+display(df)
 
 # METADATA ********************
 

@@ -1,0 +1,97 @@
+table Date
+	lineageTag: f8113539-746a-4e93-95ad-72cd4c0a94af
+	dataCategory: Time
+
+	column YearPeriod
+		dataType: string
+		lineageTag: 223c7189-7232-4376-ae91-a2d5a3ae6b0d
+		summarizeBy: none
+		sourceColumn: YearPeriod
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		lineageTag: b1e0c73c-28b5-407f-b3fc-17eb88170d87
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Period
+		dataType: string
+		lineageTag: ff909bbd-4669-41ab-9c75-49c52b4141d2
+		summarizeBy: none
+		sourceColumn: Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: General Date
+		lineageTag: 5e8d7156-ec8c-49ac-906b-5d834c65c418
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: db9c55a6-9978-4ac0-88b4-4f07ed8945a3
+			defaultHierarchy: LocalDateTable_39c22ddb-27f3-4e6c-8a44-a3380850fcb4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 983c1e5e-9659-4813-abe8-56afd44405c1
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtrID
+		dataType: string
+		lineageTag: b73d0507-ef69-48f3-ba61-e3219aeb572e
+		summarizeBy: none
+		sourceColumn: QtrID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qtr
+		dataType: string
+		lineageTag: c4fa9b30-48d2-437f-bbc7-907f5901fd1a
+		summarizeBy: none
+		sourceColumn: Qtr
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy YQM
+		lineageTag: 9ebd91a2-1692-434b-86c0-febbd42a785e
+
+		level Year
+			lineageTag: 0084292e-d9c0-43e6-8ef4-48437c5c0193
+			column: Year
+
+		level Qtr
+			lineageTag: 332b7678-28c7-4c9c-99e3-ca9c337a86a0
+			column: Qtr
+
+		level Month
+			lineageTag: 21a14687-3635-4206-ac47-e0b49a884029
+			column: Month
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(".", "IP", [Query="SELECT#(lf)       concat([Year], [period]) YearPeriod#(lf)#(tab)  ,[Year]#(lf)      ,[Period]#(lf)      ,[Date]#(lf)      ,[Month]#(lf)      ,[QtrID]#(lf)      ,[Qtr]#(lf)  FROM [MDS].[mdm].[fiscalperiod]"]),
+				    #"Renamed Columns" = Table.RenameColumns(Source, {{"YearPeriod", "YearPeriod"}, {"Year", "Year"}, {"Period", "Period"}, {"Date", "Date"}, {"Month", "Month"}, {"QtrID", "QtrID"}, {"Qtr", "Qtr"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"YearPeriod", type text}, {"Year", Int64.Type}, {"Period", type text}, {"Date", type datetime}, {"Month", type text}, {"QtrID", type text}, {"Qtr", type text}})
+				in
+				    #"Changed Type"
+
+	annotation __PBI_LegacyCustomDateTable = true
+

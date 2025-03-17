@@ -38,6 +38,7 @@
 #     * Alternatively, you can create [a new notebook](https://learn.microsoft.com/fabric/data-engineering/how-to-use-notebook#create-notebooks) to copy/paste code into cells.
 # * In the Lakehouse explorer section of your notebook, add a new or existing lakehouse to your notebook. For more information on how to add a lakehouse, see [Attach a lakehouse to your notebook](https://learn.microsoft.com/en-us/fabric/data-science/tutorial-data-science-prepare-system#attach-a-lakehouse-to-the-notebooks).
 
+
 # MARKDOWN ********************
 
 # ## Set up the notebook
@@ -50,6 +51,13 @@
 
 %pip install semantic-link
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # 2. Perform necessary imports of modules that you'll need later:
@@ -58,6 +66,13 @@
 
 import sempy.fabric as fabric
 from sempy.dependencies import plot_dependency_metadata
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -75,6 +90,13 @@ dataset = "Customer Profitability Sample"
 customer = fabric.read_table(dataset, "Customer")
 customer.head()
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # Load the `State` table into a FabricDataFrame:
@@ -84,6 +106,13 @@ customer.head()
 state = fabric.read_table(dataset, "State")
 state.head()
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # While the output looks like a pandas DataFrame, you actually initialized a data structure called a ``FabricDataFrame`` that supports some useful operations on top of pandas.
@@ -91,6 +120,13 @@ state.head()
 # CELL ********************
 
 type(customer)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -100,6 +136,13 @@ type(customer)
 
 customer_state_df = customer.merge(state, left_on="State", right_on="StateCode",  how='left')
 customer_state_df.head()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -116,6 +159,13 @@ customer_state_df.head()
 dependencies = customer_state_df.find_dependencies()
 dependencies
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # Visualize the identified dependencies by using SemPy's ``plot_dependency_metadata`` function:
@@ -123,6 +173,13 @@ dependencies
 # CELL ********************
 
 plot_dependency_metadata(dependencies)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -138,6 +195,13 @@ plot_dependency_metadata(dependencies)
 
 customer_state_df.plot_dependency_violations('Postal Code', 'City')
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # The plot of dependency violations shows values for `Postal Code` on the left hand side, and values for `City` on the right hand side. An edge connects a `Postal Code` on the left with a `City` on the right if there is a row that contains these two values. The edges are annotated with the count of such rows. For example, there are two rows with postal code 20004, one with city "North Tower" and the other with city "Washington".
@@ -147,6 +211,13 @@ customer_state_df.plot_dependency_violations('Postal Code', 'City')
 # CELL ********************
 
 customer_state_df['Postal Code'].isna().sum()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -159,6 +230,13 @@ customer_state_df['Postal Code'].isna().sum()
 customer_state_df2=customer_state_df.dropna()
 customer_state_df2.find_dependencies(verbose=1)
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # The conditional entropy for `Postal Code` and `City` is 0.049. This value can be explained by the fact there are functional dependency violations. Before you fix the violations, raise the threshold on conditional entropy from the default value of `0.01` to `0.05`, just to see the dependencies. Lower thresholds result in fewer dependencies (or higher selectivity).
@@ -166,6 +244,13 @@ customer_state_df2.find_dependencies(verbose=1)
 # CELL ********************
 
 plot_dependency_metadata(customer_state_df2.find_dependencies(threshold=0.05))
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -177,6 +262,13 @@ plot_dependency_metadata(customer_state_df2.find_dependencies(threshold=0.05))
 
 customer_state_df.list_dependency_violations('City', 'Region')
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # Take a closer look at each of the cases where a non-empty `Region` value causes a violation:
@@ -185,6 +277,13 @@ customer_state_df.list_dependency_violations('City', 'Region')
 
 customer_state_df[customer_state_df.City=='Downers Grove']
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # Downers Grove is a [city in Illinois](https://en.wikipedia.org/wiki/Downers_Grove,_Illinois), not Nebraska.
@@ -192,6 +291,13 @@ customer_state_df[customer_state_df.City=='Downers Grove']
 # CELL ********************
 
 customer_state_df[customer_state_df.City=='Fremont']
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
@@ -205,6 +311,13 @@ customer_state_df[customer_state_df.City=='Fremont']
 
 customer_state_df.list_dependency_violations('Name', 'Country/Region')
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # It appears that one customer, 'SDI Design' is present in two regions - United States and Canada. This may not be a semantic violation, but may just be an uncommon case. Still, it's worth taking a close look:
@@ -212,6 +325,13 @@ customer_state_df.list_dependency_violations('Name', 'Country/Region')
 # CELL ********************
 
 customer_state_df[customer_state_df.Name=='SDI Design']
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 

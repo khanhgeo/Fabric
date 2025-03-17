@@ -1,0 +1,76 @@
+table Time
+	dataCategory: Time
+
+	column ReportingPeriodID
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: ReportingPeriodID
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Period
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Period
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalYear
+		dataType: int64
+		dataCategory: Year
+		summarizeBy: sum
+		sourceColumn: FiscalYear
+
+		annotation Format = <Format Format="General" />
+
+		annotation DataTypeAtRefresh = Int64#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalMonth
+		dataType: string
+		dataCategory: Month
+		summarizeBy: none
+		sourceColumn: FiscalMonth
+		sortByColumn: Period
+
+		annotation DataTypeAtRefresh = String#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: dateTime
+		isKey
+		formatString: M/d/yy
+		summarizeBy: none
+		sourceColumn: Month
+
+		variation Variation
+			isDefault
+			relationship: ffdea654-6956-479d-9b81-f720c4647966
+			defaultHierarchy: LocalDateTable_2403841f-d1ed-4123-bf26-4ba8066f16d8.'Date Hierarchy'
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="M/d/yy" /></DateTimes></Format>
+
+		annotation DataTypeAtRefresh = DateTime#####not a type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Time = query
+		source
+			query = SELECT [Time].* FROM [Time]
+			dataSource: 11042aef-f468-4220-adc3-fdeba99bf6f2
+
+	annotation PBI_Id = 1e29c47b-6cb2-4b5c-b145-998ec45acf29
+
+	annotation LinkedQueryName = Time
+

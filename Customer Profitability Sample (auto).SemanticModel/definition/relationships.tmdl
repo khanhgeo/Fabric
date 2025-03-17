@@ -1,0 +1,27 @@
+relationship db9c55a6-9978-4ac0-88b4-4f07ed8945a3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.Date
+	toColumn: LocalDateTable_39c22ddb-27f3-4e6c-8a44-a3380850fcb4.Date
+
+relationship 9fe9e755-45c3-4db5-9dd7-b152e238efd1
+	fromColumn: Fact.'BU Key'
+	toColumn: BU.'BU Key'
+
+relationship eda254cd-299c-416c-b0f1-b60c489b8ff2
+	fromColumn: Fact.'Scenario Key'
+	toColumn: Scenario.'Scenario Key'
+
+relationship dade9513-4e6a-4103-9102-5cf4b014d8cd
+	fromColumn: Fact.YearPeriod
+	toColumn: Date.YearPeriod
+
+relationship 752dad4c-4a8d-4d73-8cc4-32afe2533cb5
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Executive.ID
+	toColumn: Industry.ID
+
+relationship 9d2305a0-a9dc-499f-abbf-1a8aaeeba1bb
+	fromColumn: BU.Executive_id
+	toColumn: Industry.ID
+
